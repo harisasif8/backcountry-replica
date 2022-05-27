@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>home</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Users/hasif/Desktop/Haris Intern task/Authentication/css/style.css">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Sahitya' rel='stylesheet'>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col ">
+                <header>
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+                        <div><img src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/home/logo.jpg"
+                                class="logo-image mr-2" alt=""></div>
+                        <a class="navbar-brand" href="#">Auto'care</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">About</a>
+                                </li>
+                                <li class="nav-item dropdown active">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Categories
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Car</a>
+                                        <a class="dropdown-item" href="#">Bike</a>
+
+                                        <a class="dropdown-item" href="#">Truck</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Contact Us</a>
+                                </li>
+                         
+                            
+                            </ul>
+                            <button class="btn btn-danger mr-5" onclick="logout()" id="logoutButton">logout</button>
+                            <h3 class="text-white pr-5" id="userGreet"></h5>
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </nav>
+
+                </header>
+
+                <section class="google-font">
+                        
+                    
+
+                    <div class="row text-secondary">
+                        <div class="card-deck m-auto pt-2 row-cols-1 row-cols-md-3 g-4 ">
+                            <div class="card col col-lg-4  col-md-4 col-sm-12">
+                                <img class="card-img-top h-50"
+                                    src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/cars/brv.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title text-dark">BRV</h3>
+                                    <p class="card-text">The Honda BRV has 1 Diesel Engine and 1 Petrol Engine on offer.
+                                        The Diesel engine is 1498 cc while the Petrol engine is 1497 cc . It is
+                                        available with Manual & Automatic transmission. Depending upon the variant and
+                                        fuel type the BRV has a mileage of 15.4 to 21.9 kmpl & Ground clearance of BRV
+                                        is 210mm.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 11 mins ago</small>
+                                </div>
+                            </div>
+                            <div class="card col col-lg-4  col-md-4 col-sm-12">
+                                <img class="card-img-top h-50"
+                                    src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/cars/civic.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title text-dark">Civic</h3>
+                                    <p class="card-text">The Honda civic has 1 Diesel Engine and 1 Petrol Engine on offer.
+                                        The Diesel engine is 1498 cc while the Petrol engine is 1497 cc . It is
+                                        available with Manual & Automatic transmission. Depending upon the variant and
+                                        fuel type the BRV has a mileage of 15.4 to 21.9 kmpl & Ground clearance of BRV
+                                        is 210mm.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 11 mins ago</small>
+                                </div>
+                            </div>
+                            <div class="card col col-lg-4  col-md-4 col-sm-12">
+                                <img class="card-img-top h-50"
+                                    src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/cars/corolla.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title text-dark">Corolla </h3>
+                                    <p class="card-text">The Toyota corolla has 1 Diesel Engine and 1 Petrol Engine on offer.
+                                        The Diesel engine is 1498 cc while the Petrol engine is 1497 cc . It is
+                                        available with Manual & Automatic transmission. Depending upon the variant and
+                                        fuel type the BRV has a mileage of 15.4 to 21.9 kmpl & Ground clearance of BRV
+                                        is 210mm.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 11 mins ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 text-secondary">
+                        <div class="card-deck m-auto pt-2">
+                            <div class="card col col-lg-4 col-md-4 col-sm-12">
+                                <img class="card-img-top h-50"
+                                    src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/bikes/retro.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title text-dark">Retro</h3>
+                                    <p class="card-text">The Best Retro Bikes (2022) · Kawasaki Z900RS · BMW R nineT ·
+                                        Triumph Speed Twin · Triumph Bonneville T120 · Yamaha XSR900 · Triumph Street
+                                        Twin · Moto Guzzi V7 IV.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>
+                            </div>
+                            <div class="card col col-lg-4 col-md-4 col-sm-12">
+                                <img class="card-img-top h-50"
+                                    src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/bikes/suzuki.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title text-dark">Suzuki</h3>
+                                    <p class="card-text">Suzuki Motor Pakistan is a Pakistani motorcycle assembler which
+                                        is a wholly-owned subsidiary of Japanese company Suzuki Motor Company.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 27 mins ago</small>
+                                </div>
+                            </div>
+                            <div class="card col col-lg-4 col-md-4 col-sm-12">
+                                <img class="card-img-top h-50"
+                                    src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/bikes/yamaha.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title text-dark">Yamaha</h3>
+                                    <p class="card-text">Yamaha Motor Pakistan is a Pakistani motorcycle assembler which
+                                        is a wholly-owned subsidiary of Japanese company Yamaha Motor Company.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 41 mins ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 text-secondary">
+                        <div class="card-deck m-auto pt-2">
+                            <div class="card col col-lg-4 col-md-4 col-sm-12">
+                                <img class="card-img-top h-50"
+                                    src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/trucks/blue.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title text-dark">Ford</h3>
+                                    <p class="card-text p-50">Explore the new trucks and pickups from Ford®'s lineup.
+                                        Research MPG,
+                                        performance, pricng and more--and select the best option for you.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>
+                            </div>
+                            <div class="card col col-lg-4 col-md-4 col-sm-12">
+                                <img class="card-img-top h-50"
+                                    src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/trucks/white.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title text-dark">Tundra</h3>
+                                    <p class="card-text p-50 para-hiding">Explore the new trucks and pickups from Ford®'s lineup.
+                                        Research MPG,
+                                        performance, pricng and more--and select the best option for you.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>
+                            </div>
+                            <div class="card col col-lg-4 col-md-4 col-sm-12">
+                                <img class="card-img-top h-50"
+                                    src="/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/trucks/audi future truck.jpeg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title text-dark">Audi</h3>
+                                    <p class="card-text p-50">Explore the new trucks and pickups from Ford®'s lineup.
+                                        Research MPG,
+                                        performance, pricng and more--and select the best option for you.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+
+
+        <div class="row google-font">
+            <div class="col col-sm-12">
+                <ul class="pagination pagination-md m-5 justify-content-center">
+                    <li class="page-item"><a class="page-link bg-danger text-white" href="#">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link bg-danger text-white" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link bg-danger text-white" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link bg-danger text-white" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link bg-danger text-white" href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+        </section>
+
+        <footer class="page-footer font-small bg-info mt-3 ">
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3 text-light">
+
+            </div>
+            <div class="footer-copyright text-center py-3 text-light">© Haris Asif
+
+            </div>
+            <div class="footer-copyright text-center py-3 text-light">
+
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+
+    </div>
+
+
+
+    </div>
+
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+<script  src="/Users/hasif/Desktop/Haris Intern task/Authentication/scripts/home.js"></script>
+
+</html>

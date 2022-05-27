@@ -1,0 +1,135 @@
+html, body {
+    height: 100%;
+}
+
+.large-font{
+    font-size:larger;
+}
+
+
+.form-radius {
+    border-radius: .7rem;
+    color: rgb(41, 75, 6);
+    background-size: cover;
+    background-image: url("/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/background/contbackground.jpg");
+    opacity: 1;
+}
+
+.authentication-form {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+}
+
+.authentication-body {
+    background-image: url("/Users/hasif/Desktop/Haris Intern task/Authentication/asset/images/background/logbg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+} 
+
+.red-color {
+    color: brown;
+}
+
+.logo-image {
+    width: 80px;
+    border-radius: 100%;
+}
+
+.avatar {
+    width: 60%;
+    border-radius: 100%;
+    
+}
+
+.authentication-form {
+    width: 360px;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.google-font{
+    font-family: 'Sahitya'; 
+    
+}
+
+
+.header {
+    /* background-color: rgb(123, 32, 32);   */
+    
+
+}
+
+.main-logo{
+    height: 100px;
+    width: 245px;
+   
+}
+
+.search-box{
+    background-color: black;
+    color: #fff;
+    border-radius: 25px;
+    
+}
+
+.search-box::-webkit-input-placeholder {
+    color: #fff;
+  }
+ 
+  hr{
+    border-top: 1px solid rgba(7, 7, 7, 0.469);
+  }
+
+  .input-icons i {
+    position: absolute;
+    margin-top: 8px; 
+}
+ 
+.input-icons {
+    width: 100%;
+    margin-top: -20px;
+}
+ 
+.icon {
+    padding: 10px;
+    color: white;
+    min-width: 50px;
+    /* text-align: center; */
+    padding-top: 15px;
+}
+ 
+.input-field {
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px;
+    /* text-align: center; */
+}
+
+.chat-icon{
+    font-size: large;
+    padding-top: 40px;
+    color: black;
+}
+ 
+
+@media only screen and (max-width: 600px) {
+    .authentication-form {
+        width: 300px;
+    }
+}
+
+
+
+
+
