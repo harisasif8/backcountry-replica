@@ -64,10 +64,11 @@ html, body {
 }
 
 
-.header {
-    /* background-color: rgb(123, 32, 32);   */
-    
-
+.top-div{
+    background-color: #ddc9a3;
+    color: black;
+    font-weight: bolder;
+    text-align: center;
 }
 
 .main-logo{
@@ -80,6 +81,7 @@ html, body {
     background-color: black;
     color: #fff;
     border-radius: 25px;
+    height: 40px;
     
 }
 
@@ -93,33 +95,43 @@ html, body {
 
   .input-icons i {
     position: absolute;
-    margin-top: 8px; 
+    margin-top: 4px; 
 }
  
 .input-icons {
     width: 100%;
-    margin-top: -20px;
+    margin-top: -17px;
 }
  
 .icon {
     padding: 10px;
     color: white;
     min-width: 50px;
-    /* text-align: center; */
     padding-top: 15px;
 }
  
 .input-field {
     width: 100%;
-    padding: 10px;
     padding-left: 40px;
-    /* text-align: center; */
 }
 
 .chat-icon{
     font-size: large;
     padding-top: 40px;
     color: black;
+    
+}
+
+.phone-icon{
+    font-size: large;
+    padding-top: 40px;
+    color:  black;
+}
+
+.section-top{
+    text-align: center;
+    background-color: black;
+    color: #fff;
 }
  
 
