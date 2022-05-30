@@ -133,8 +133,37 @@ html, body {
     background-color: black;
     color: #fff;
 }
- 
 
+
+ 
+.list-card{
+    max-width: 100%;
+    min-width: 100%;
+    height: auto;
+    border: none;
+    
+}
+
+.text-hider{
+   text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+}
+
+.line-through
+{padding-left: 3%;
+    text-decoration: line-through;
+}
+
+.column-grid{
+    display: grid;
+  justify-content: space-evenly;
+}
+
+.y-scroll{
+    overflow-y: auto;
+    
+}
 @media only screen and (max-width: 600px) {
     .authentication-form {
         width: 300px;
