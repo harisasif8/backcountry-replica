@@ -1,9 +1,10 @@
-html, body {
+html,
+body {
     height: 100%;
 }
 
-.large-font{
-    font-size:larger;
+.large-font {
+    font-size: larger;
 }
 
 
@@ -31,7 +32,7 @@ html, body {
     background-size: cover;
     height: 100%;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-} 
+}
 
 .red-color {
     color: brown;
@@ -45,7 +46,7 @@ html, body {
 .avatar {
     width: 60%;
     border-radius: 100%;
-    
+
 }
 
 .authentication-form {
@@ -58,119 +59,138 @@ html, body {
     object-fit: cover;
 }
 
-.google-font{
-    font-family: 'Sahitya'; 
-    
+.google-font {
+    font-family: 'Sahitya';
+
 }
 
 
-.top-div{
+.top-div {
     background-color: #ddc9a3;
     color: black;
     font-weight: bolder;
     text-align: center;
 }
 
-.main-logo{
+.main-logo {
     height: 100px;
     width: 245px;
-   
+
 }
 
-.search-box{
+.search-box {
     background-color: black;
     color: #fff;
     border-radius: 25px;
     height: 40px;
-    
+
 }
 
 .search-box::-webkit-input-placeholder {
     color: #fff;
-  }
- 
-  hr{
-    border-top: 1px solid rgba(7, 7, 7, 0.469);
-  }
-
-  .input-icons i {
-    position: absolute;
-    margin-top: 4px; 
 }
- 
+
+hr {
+    border-top: 1px solid rgba(7, 7, 7, 0.469);
+}
+
+.input-icons i {
+    position: absolute;
+    margin-top: 4px;
+}
+
 .input-icons {
     width: 100%;
     margin-top: -17px;
 }
- 
+
 .icon {
     padding: 10px;
     color: white;
     min-width: 50px;
     padding-top: 15px;
 }
- 
+
 .input-field {
     width: 100%;
     padding-left: 40px;
 }
 
-.chat-icon{
+.chat-icon {
     font-size: large;
     padding-top: 40px;
     color: black;
-    
+
 }
 
-.phone-icon{
+.phone-icon {
     font-size: large;
     padding-top: 40px;
-    color:  black;
+    color: black;
 }
 
-.section-top{
+.section-top {
     text-align: center;
     background-color: black;
     color: #fff;
 }
 
 
- 
-.list-card{
+
+.list-card {
     max-width: 100%;
     min-width: 100%;
     height: auto;
     border: none;
+
+}
+
+.help-text{
+    max-width: 100%;
+    height: 100%;
+    min-width: 100%;
+}
+
+.social-btn {
+
+    padding: 10px;
+    border-radius: 50%;
+    border: 2px solid black;
     
 }
 
-.text-hider{
-   text-overflow: ellipsis;
-overflow: hidden;
-white-space: nowrap;
+.page-container{
+    min-width: 130px;
+    max-width: 130px;
+  
 }
 
-.line-through
-{padding-left: 3%;
+.about-backcountry{
+display: block;
+width: 100%;
+height: auto;
+}
+
+
+.text-hider {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.line-through {
+    padding-left: 3%;
     text-decoration: line-through;
 }
 
-.column-grid{
+.column-grid {
     display: grid;
-  justify-content: space-evenly;
+    justify-content: space-evenly;
 }
 
-.y-scroll{
-    overflow-y: auto;
-    
-}
+
 @media only screen and (max-width: 600px) {
     .authentication-form {
         width: 300px;
     }
 }
-
-
-
-
-
