@@ -3167,11 +3167,105 @@ const products = [
 ];
 
 
-const fetchProducts = () => {
-    const productsHtml = products.map(() => {
 
-    });
+const createHtmlELement = (type) => {
+    return document.createElement(type);
 };
 
-fetchProducts();
+const setElementAttribute = (element, type, value) => {
+    element.setAttribute(type, value);
+};
+
+const fetchProducts = (product) => {
+    const gridRow = document.getElementById('grid-row');
+
+        product.forEach((productData) => {
+        const gridColumnDiv = createHtmlELement('div');
+        setElementAttribute(gridColumnDiv, 'class', 'col col-lg-3 col-md-4 col-sm-12  pt-2 px-1');
+
+        gridColumnDiv.setAttribute('class', 'col col-lg-3 col-md-4 col-sm-12  py-1 px-1');
+        const cardDiv = createHtmlELement('div')
+        setElementAttribute(cardDiv, 'class', 'card list-card')
+        const cardImgTag = createHtmlELement('img')
+        setElementAttribute(cardImgTag, 'class', 'card-img-top list-card')
+        cardImgTag.src = `https://www.backcountry.com${productData.productMainImage.mediumImg}`;
+
+        cardDiv.appendChild(cardImgTag);
+
+        const cardBodyDiv = createHtmlELement('div')
+        setElementAttribute(cardBodyDiv, 'class', 'card-body text-hider')
+
+        const cardTitleDiv = createHtmlELement('h6');
+        setElementAttribute(cardTitleDiv, 'class', 'card-title')
+        cardTitleDiv.innerHTML = productData.brand.name;
+
+        const cardBodyPara = createHtmlELement('p')
+        setElementAttribute(cardBodyPara, 'class', 'card-text pb-5 ')
+        cardBodyPara.innerHTML = productData.title;
+
+        const cardPrice = createHtmlELement('h6')
+        cardPrice.innerText = `$${productData.activePrice.maxListPrice}`
+
+        const ratingDiv = createHtmlELement('div')
+        setElementAttribute(ratingDiv, 'class', 'reviews')
+
+        const cardAddToCartBtnDiv = createHtmlELement('div')
+        const cardAddToCartBtn = createHtmlELement('a')
+        setElementAttribute(cardAddToCartBtn, 'class', 'btn btn-dark stretched-link mt-2')
+        setElementAttribute(cardAddToCartBtn, 'href', '#')
+        cardAddToCartBtn.innerHTML = "Add To Cart";
+
+        cardAddToCartBtnDiv.appendChild(cardAddToCartBtn);
+
+        cardBodyDiv.appendChild(cardTitleDiv);
+        cardBodyDiv.appendChild(cardBodyPara);
+        cardBodyDiv.appendChild(cardPrice);
+        cardBodyDiv.appendChild(ratingDiv);
+
+        Array.apply(null, { length: productData.customerReviews.average }).forEach((review) => {
+            const cardRating = createHtmlELement('i')
+            setElementAttribute(cardRating, 'class', "fa fa-star")
+            setElementAttribute(cardRating, 'aria-hidden', 'true')
+            ratingDiv.appendChild(cardRating);
+        });
+
+        cardBodyDiv.appendChild(cardAddToCartBtnDiv);
+        cardDiv.appendChild(cardBodyDiv);
+        gridColumnDiv.appendChild(cardDiv);
+        gridRow.appendChild(gridColumnDiv);
+    
+        })
+
+};
+
+fetchProducts(products)
+
+
+const searchProducts = (value) => {
+    
+   const gridRow =  document.getElementById('grid-row');
+   gridRow.textContent = '';
+    const searchValue = document.getElementById('searchBar').value.toLowerCase();
+
+    const filteredProducts = products.filter((product) => {
+        return(
+        product.brand.name.toLowerCase().includes(searchValue) || product.title.toLowerCase().includes(searchValue)
+        );
+    } )
+
+   fetchProducts(filteredProducts)
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
