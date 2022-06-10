@@ -1,4 +1,4 @@
-const products = [
+const BCProducts = [
     {
         "features": [
             {
@@ -88,7 +88,7 @@ const products = [
             "sizes": {}
         },
         "selectedColor": "/images/items/tiny/DMM/DMM0025/OF.jpg",
-        "selectedSize": "",
+        "selectedSize": "7",
         "selectedSku": "DMM0025-OF-NOS711",
         "selectedQuantity": 1,
         "hasCompleteData": false,
@@ -250,7 +250,7 @@ const products = [
             }
         },
         "selectedColor": "/images/items/tiny/BLD/BLD00RJ/ONECOL.jpg",
-        "selectedSize": "One Size",
+        "selectedSize": "6",
         "selectedSku": "BLD00RJ-ONECOL-ONESIZ",
         "selectedQuantity": 1,
         "hasCompleteData": true,
@@ -437,7 +437,7 @@ const products = [
             }
         },
         "selectedColor": "/images/items/tiny/CRA/CRA00GV/BK.jpg",
-        "selectedSize": "7",
+        "selectedSize": "S",
         "selectedSku": "CRA00GV-BK-S",
         "selectedQuantity": 1,
         "hasCompleteData": true,
@@ -624,7 +624,7 @@ const products = [
             }
         },
         "selectedColor": "/images/items/tiny/CRV/CRV005Y/ENC.jpg",
-        "selectedSize": "7",
+        "selectedSize": "S",
         "selectedSku": "CRV005Y-ENC-S",
         "selectedQuantity": 1,
         "hasCompleteData": true,
@@ -875,7 +875,7 @@ const products = [
             }
         },
         "selectedColor": "/images/items/tiny/SET/SET004B/SNGY.jpg",
-        "selectedSize": "",
+        "selectedSize": "L",
         "selectedSku": "",
         "selectedQuantity": 1,
         "hasCompleteData": true,
@@ -1250,7 +1250,7 @@ const products = [
             }
         },
         "selectedColor": "/images/items/tiny/SPU/SPU0003/BK.jpg",
-        "selectedSize": "",
+        "selectedSize": "M",
         "selectedSku": "",
         "selectedQuantity": 1,
         "hasCompleteData": true,
@@ -1671,7 +1671,7 @@ const products = [
             }
         },
         "selectedColor": "/images/items/tiny/SPU/SPU0005/BK.jpg",
-        "selectedSize": "",
+        "selectedSize": "S",
         "selectedSku": "",
         "selectedQuantity": 1,
         "hasCompleteData": true,
@@ -2092,7 +2092,7 @@ const products = [
             }
         },
         "selectedColor": "/images/items/tiny/SPU/SPU0006/BK.jpg",
-        "selectedSize": "",
+        "selectedSize": "XL",
         "selectedSku": "",
         "selectedQuantity": 1,
         "hasCompleteData": true,
@@ -2513,7 +2513,7 @@ const products = [
             }
         },
         "selectedColor": "/images/items/tiny/SPU/SPU000C/BK.jpg",
-        "selectedSize": "",
+        "selectedSize": "M",
         "selectedSku": "",
         "selectedQuantity": 1,
         "hasCompleteData": true,
@@ -2934,7 +2934,7 @@ const products = [
             }
         },
         "selectedColor": "/images/items/tiny/SPU/SPU000E/BK.jpg",
-        "selectedSize": "",
+        "selectedSize": "L",
         "selectedSku": "",
         "selectedQuantity": 1,
         "hasCompleteData": true,
@@ -3166,148 +3166,156 @@ const products = [
     }
 ];
 
-const cart = 'Cart'
+const LScart = 'Cart'
 
-
-const createHtmlELement = (type) => {
+const createHtmlCartELement = (type) => {
     return document.createElement(type);
 };
 
-const setElementAttribute = (element, type, value) => {
+const setCartElementAttribute = (element, type, value) => {
     element.setAttribute(type, value);
 };
 
 
-const fetchProducts = (product) => {
-    const gridRow = document.getElementById('grid-row');
+const showCartProducts = (cartProduct) => {
 
-    product.forEach((productData) => {
-        const gridColumnDiv = createHtmlELement('div');
-        setElementAttribute(gridColumnDiv, 'class', 'col col-lg-3 col-md-4 col-sm-12  pt-2 px-1');
+    const emptyCart = document.getElementById('emptyCart')
 
-        gridColumnDiv.setAttribute('class', 'col col-lg-3 col-md-4 col-sm-12  py-1 px-1');
-        const cardDiv = createHtmlELement('div')
-        setElementAttribute(cardDiv, 'class', 'card list-card')
-        const cardImgTag = createHtmlELement('img')
-        setElementAttribute(cardImgTag, 'class', 'card-img-top list-card')
-        cardImgTag.src = `https://www.backcountry.com${productData.productMainImage.mediumImg}`;
+    const cartIds = localStorage.getItem(LScart) || '[]';
+    parsedCartId = JSON.parse(cartIds)
 
-        cardDiv.appendChild(cardImgTag);
+    if (parsedCartId.length) {
+        emptyCart.textContent = ''
+    }
 
-        const cardBodyDiv = createHtmlELement('div')
-        setElementAttribute(cardBodyDiv, 'class', 'card-body text-hider')
+    parsedCartId.map((parsedId) => {
+        const filteredId = cartProduct.find((product) => product.id === parsedId);
+        const { productMainImage, title: productTitle, id: productId, selectedSize, activePrice } = filteredId;
 
-        const cardTitleDiv = createHtmlELement('h6');
-        setElementAttribute(cardTitleDiv, 'class', 'card-title')
-        cardTitleDiv.innerHTML = productData.brand.name;
+        const cartRow = document.getElementById('cartRow');
 
-        const cardBodyPara = createHtmlELement('p')
-        setElementAttribute(cardBodyPara, 'class', 'card-text pb-5 ')
-        cardBodyPara.innerHTML = productData.title;
+        const cartFirstColDiv = createHtmlCartELement('div')
+        setCartElementAttribute(cartFirstColDiv, 'class', 'col-lg-8 col-sm-12 col-md-8 mt-4')
 
-        const cardPrice = createHtmlELement('h6')
-        cardPrice.innerText = `$${productData.activePrice.maxListPrice}`
+        const cartFlexDiv = createHtmlCartELement('div')
+        setCartElementAttribute(cartFlexDiv, 'class', 'd-flex')
 
-        const ratingDiv = createHtmlELement('div')
-        setElementAttribute(ratingDiv, 'class', 'reviews')
+        const cartFirstFlexColDiv = createHtmlCartELement('div')
+        setCartElementAttribute(cartFirstFlexColDiv, 'class', 'col-lg-4 col-md-4')
+        cartFlexDiv.appendChild(cartFirstFlexColDiv)
 
-        const cardAddToCartBtnDiv = createHtmlELement('div')
-        const cardAddToCartBtn = createHtmlELement('a')
-        setElementAttribute(cardAddToCartBtn, 'class', 'btn btn-dark  mt-2')
-        setElementAttribute(cardAddToCartBtn, 'href', '#')
-        setElementAttribute(cardAddToCartBtn, 'onclick', `addToCart('${productData.id}',event)`)
-        setElementAttribute(cardAddToCartBtn, 'id', `'${productData.id}'`)
+        const cartImg = createHtmlCartELement('img')
+        setCartElementAttribute(cartImg, 'class', 'cart-image img-fluid')
+        cartImg.src = `https://www.backcountry.com${productMainImage.mediumImg}`;
 
-        cardAddToCartBtn.innerHTML = "Add To Cart";
 
-        const cartId = localStorage.getItem(cart) || '[]'
-        parsedCartId = JSON.parse(cartId)
+        const cartSecondFlexColDiv = createHtmlCartELement('div')
+        setCartElementAttribute(cartSecondFlexColDiv, 'class', 'col-lg-7 col-md-9')
+        cartFlexDiv.appendChild(cartSecondFlexColDiv)
 
-        const isAddedToCart = parsedCartId.find((btnId) => btnId === productData.id);
+        const cartTextDiv = createHtmlCartELement('div')
+        setCartElementAttribute(cartTextDiv, 'class', 'cart-text')
 
-        if (isAddedToCart) {
-            setElementAttribute(cardAddToCartBtn, 'class', 'btn btn-danger mt-2')
-            cardAddToCartBtn.innerHTML = 'Remove From Cart';
-        }
+        const cartTitle = createHtmlCartELement('h4')
+        cartTitle.innerHTML = productTitle;
 
-        cardAddToCartBtnDiv.appendChild(cardAddToCartBtn);
+        const cartTextId = createHtmlCartELement('p')
+        setCartElementAttribute(cartTextId, 'class', 'text-secondary')
+        cartTextId.innerHTML = productId;
 
-        cardBodyDiv.appendChild(cardTitleDiv);
-        cardBodyDiv.appendChild(cardBodyPara);
-        cardBodyDiv.appendChild(cardPrice);
-        cardBodyDiv.appendChild(ratingDiv);
+        const cartParaText = createHtmlCartELement('div')
+        setCartElementAttribute(cartParaText, 'class', 'cart-para-text text-dark')
 
-        Array.apply(null, { length: productData.customerReviews.average }).forEach((review) => {
-            const cardRating = createHtmlELement('i')
-            setElementAttribute(cardRating, 'class', "fa fa-star")
-            setElementAttribute(cardRating, 'aria-hidden', 'true')
-            ratingDiv.appendChild(cardRating);
-        });
+        const cartColorPara = createHtmlCartELement('p')
+        cartColorPara.innerHTML = `Color: ${productMainImage.name}`
 
-        cardBodyDiv.appendChild(cardAddToCartBtnDiv);
-        cardDiv.appendChild(cardBodyDiv);
-        gridColumnDiv.appendChild(cardDiv);
-        gridRow.appendChild(gridColumnDiv);
+        const cartSizePara = createHtmlCartELement('p')
+        cartSizePara.innerHTML = `Size: ${selectedSize}`
 
+
+
+        const cartSecondColDiv = createHtmlCartELement('div')
+        setCartElementAttribute(cartSecondColDiv, 'class', 'col-lg-2  col-sm-4 col-md-3 text-lg-right text-md-right mt-4')
+
+        const cartQuantityDiv = createHtmlCartELement('div')
+        setCartElementAttribute(cartQuantityDiv, 'class', 'cart-quantity')
+
+        const quantityFirstDiv = createHtmlCartELement('div')
+
+        const decrementButton = createHtmlCartELement('button')
+        setCartElementAttribute(decrementButton, 'class', 'btn btn-outline-dark')
+        setCartElementAttribute(decrementButton, 'id', 'decrementBtn')
+        setCartElementAttribute(decrementButton, 'disabled', 'true')
+        decrementButton.innerHTML = '-'
+
+        const inputQuantity = createHtmlCartELement('input')
+        setCartElementAttribute(inputQuantity, 'class', 'btn text-center shadow-none ')
+        setCartElementAttribute(inputQuantity, 'value', '1')
+        setCartElementAttribute(inputQuantity, 'id', 'quantityValue')
+
+        const incrementButton = createHtmlCartELement('button')
+        setCartElementAttribute(incrementButton, 'class', 'btn btn-outline-dark')
+        setCartElementAttribute(incrementButton, 'onclick', `incrementQuantity('${parsedId}')`)
+        incrementButton.innerHTML = '+'
+
+        const quantitySecondDiv = createHtmlCartELement('div')
+
+        const productPrice = createHtmlCartELement('h6')
+        setCartElementAttribute(productPrice, 'class', 'mt-lg-4 ml-lg-5 mt-md-4 ml-md-5 price bold-text')
+        setCartElementAttribute(productPrice, 'id', 'price')
+        productPrice.innerHTML = `${activePrice.maxListPrice}`
+
+        const removeCart = createHtmlCartELement('h5')
+
+        const removeCartBtn = createHtmlCartELement('button')
+        setCartElementAttribute(removeCartBtn, 'class', 'btn shadow-none text-muted mt-lg-3 underline')
+        removeCartBtn.innerHTML = 'Remove'
+
+        cartRow.appendChild(cartFirstColDiv)
+        cartFirstColDiv.appendChild(cartFlexDiv)
+        cartFirstFlexColDiv.appendChild(cartImg)
+        cartSecondFlexColDiv.appendChild(cartTextDiv)
+        cartTextDiv.appendChild(cartTitle)
+        cartTextDiv.appendChild(cartTextId)
+        cartTextDiv.appendChild(cartParaText)
+        cartParaText.appendChild(cartColorPara)
+        cartParaText.appendChild(cartSizePara)
+        cartRow.appendChild(cartSecondColDiv)
+        cartSecondColDiv.appendChild(cartQuantityDiv)
+        cartQuantityDiv.appendChild(quantityFirstDiv)
+        quantityFirstDiv.appendChild(decrementButton)
+        quantityFirstDiv.appendChild(inputQuantity)
+        quantityFirstDiv.appendChild(incrementButton)
+        cartQuantityDiv.appendChild(quantitySecondDiv)
+        quantitySecondDiv.appendChild(productPrice)
+        quantitySecondDiv.appendChild(removeCart)
+        removeCart.appendChild(removeCartBtn)
     })
-
-};
-
-fetchProducts(products)
-
-
-const searchProducts = (value) => {
-
-    const gridRow = document.getElementById('grid-row');
-    gridRow.textContent = '';
-    const searchValue = document.getElementById('searchBar').value.toLowerCase();
-
-    const filteredProducts = products.filter((product) => {
-        return (
-            product.brand.name.toLowerCase().includes(searchValue) || product.title.toLowerCase().includes(searchValue)
-        );
-    })
-
-    fetchProducts(filteredProducts)
-
 }
 
 
-const addToCart = (productId, e) => {
-    e.preventDefault()
-    const cartBtn = document.getElementById(`'${productId}'`);
-    const cartItem = localStorage.getItem(cart) || '[]';
-    const parsedCartItem = JSON.parse(cartItem);
+showCartProducts(BCProducts)
 
-    if (cartBtn.innerHTML === 'Add To Cart') {
-        parsedCartItem.push(productId);
-        cartBtn.innerHTML = 'Remove From Cart'
-        setElementAttribute(cartBtn, 'class', 'btn btn-danger mt-2')
+
+const incrementQuantity = (backCountryProduct) => {
+
+
+    let quantityValue = document.getElementById('quantityValue').value
+    let productPrice = document.getElementById('price').innerText
+
+    quantityValue++
+
+    document.getElementById('quantityValue').value = quantityValue
+
+    if (quantityValue > 1) {
+        const decrementQuantity = document.getElementById('decrementBtn')
+        decrementQuantity.removeAttribute('disabled')
     }
 
-    else if (cartBtn.innerHTML === 'Remove From Cart') {
-        const cartItemIndex = parsedCartItem.indexOf(productId);
-        parsedCartItem.splice(cartItemIndex, 1)
-        cartBtn.innerHTML = 'Add To Cart'
-        setElementAttribute(cartBtn, 'class', 'btn btn-dark mt-2')
-    }
 
-    localStorage.setItem(cart, JSON.stringify(parsedCartItem));
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+// incrementQuantity(BCProducts)
 
 

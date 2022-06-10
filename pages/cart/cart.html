@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Cart</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="py-2 top-div"> Extra 20% Off Ends Today <u>Shop Select Markdowns</u> </div>
+    <header class="header ">
+        <div class="container-fluid  ">
+            <div class="row">
+                <div class="col-lg-2  ">
+                    <a href="./../productListing/productListing.html"> <img class="img-fluid main-logo"
+                            src="./../../asset/images/productionlist/header/backcountrylogo.jpg" alt=""></a>
+                </div>
+
+                <form class="col-lg-4 my-4 ">
+
+                    <div class="input-icons">
+                        <span type="button"> <i class="fa fa-search icon"> </i></span>
+                        <input class="input-field search-box" type="text" id="searchBar" onkeyup="searchProducts()"
+                            placeholder="Search gear & apparel">
+                    </div>
+                </form>
+
+                <div class="col-lg-1 header-icon ">
+                    <span type="button"> <i class="fa fa-comments"> Chat</i></span>
+
+                </div>
+
+                <div class="col-lg-3 header-icon">
+                    <span type="button"> <i class="fa fa-phone"></i> <u> 1-800-409-4502</u></span>
+
+                </div>
+
+                <div class="col-lg-2 header-icon">My Account
+                    <span type="button"> <i class="fa fa-user-circle "></i></span>
+                    <span type="button" class="ml-5"> <a href="./../cart/cart.html"> <i
+                                class="fa fa-shopping-cart text-dark"></i></a></span>
+
+                </div>
+
+            </div>
+            <hr class="solid">
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse mb-3 " id="navbarNavAltMarkup">
+                <div class="navbar-nav  font-weight-bold">
+                    <a class="nav-item nav-link active mr-4" href="#">New Arrivals <span
+                            class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active mr-4" href="#">Women</a>
+                    <a class="nav-item nav-link active mr-4" href="#">Men</a>
+                    <a class="nav-item nav-link active mr-4" href="#">Kids</a>
+                    <a class="nav-item nav-link active mr-4" href="#">Activities</a>
+                    <a class="nav-item nav-link active mr-4" href="#">Brands</a>
+                    <a class="nav-item nav-link active mr-4" href="#">Exclusive Brands</a>
+                    <a class="nav-item nav-link active mr-4 text-danger" href="#">Sale</a>
+                    <a class="nav-item nav-link active mr-4" href="#">Explore Blog</a>
+                </div>
+            </div>
+        </nav>
+        <hr class="solid mx-3">
+    </header>
+
+    <section>
+        <div class="container ">
+            <div class="row my-5 mx-auto ">
+                <div class="col">
+                    <h3 class="bold-text ">My Cart</h3>
+                    <div id="emptyCart">
+                        <h4 class="bold-text my-5">Your cart is currently empty.</h4>
+                        <div class="d-lg-flex">
+                            <div class="col-lg-6 col-sm-12 col-md-6 mb-4">
+                                <h6 class="bold-text">Do you have saved items?</h6>
+                                <p class="text-dark">Sign in to purchase and manage items that you have saved in your
+                                    cart
+                                    or
+                                    wish list.</p>
+                                <button class="btn btn-outline-dark bold-text round-btn">Sign In</button>
+                            </div>
+                            <div class="col-lg-6 col-sm-12 col-md-6">
+                                <h6 class="bold-text">Want to shop?</h6>
+                                <p class="text-dark">This is the perfect opportunity to shop for the gear you've been
+                                    wanting.</p>
+                                <button class="btn btn-outline-dark bold-text round-btn">Continue Shopping</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="row" id="cartRow">
+                    <!-- <div class="col-lg-8 col-sm-12 col-md-8">
+                        <div class="d-flex">
+                            <div class="col-lg-4 col-md-4">
+                                <img class="cart-image img-fluid"
+                                    src="./../../asset/images/productionlist/cart/HEAMET.jpeg" alt="Card image cap">
+                            </div>
+                            <div class="col-lg-7 col-md-9">
+                                <div class="cart-text">
+                                    <h4>Backcountry BC 96 T-Shirt - Men's</h4>
+                                    <p class="text-secondary">BCCZ2OT-HEAMET-M</p>
+                                    <div class="cart-para-text text-dark">
+                                        <p>Color: Heavy Metal</p>
+                                        <p>Size: M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2  col-sm-4 col-md-3 text-lg-right text-md-right mt-4">
+                        <div class="cart-quantity">
+                            <div>
+                                <button class="btn btn-outline-dark">-</button>
+                                <input type="textfield" value="0" class="btn text-center shadow-none ">
+                                <button class="btn btn-outline-dark">+</button>
+                            </div>
+                            <div>
+                                <h6 class="mt-lg-4 ml-lg-5 mt-md-4 ml-md-5 price bold-text">$22.00</h6>
+                                <h5> <button class="btn shadow-none text-muted mt-lg-3 underline">Remove
+                                    </button>
+                                </h5>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+
+    </section>
+
+    <footer>
+        <hr class="solid mx-3">
+        <div class="container-fluid">
+            <div class="row my-5">
+                <div class="col-lg-6 my-5">
+                    <div class="col-lg-6 col-md-12 col-sm-12 text-center help-text">
+                        <h4>Need Help?</h4>
+                        <p>Talk to our Gearheads 24/7 about your needs.</p>
+                        <button class="btn btn-dark rounded-pill my-2 mb-3 ">Chat Now</button>
+                        <p class="font-weight-bolder">Or Call: 1-800-409-4502</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 col-sm-12 my-5 mx-auto">
+                    <div class="text-center help-text">
+                        <h4>15% Off Your First Order</h4>
+                        <p>And get the scoop on sales & new gear!</p>
+                        <p class="font-weight-bold">Email Address *</p>
+                        <div class="input-group mb-3 col-lg-6 col-sm-12 col-md-6 mx-auto w-auto">
+                            <input type="text" class="form-control shadow-none" placeholder="email@backcountry.com"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-dark font-weight-bold" type="button">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="solid mx-3">
+        <div class="container-fluid">
+            <div class="row my-5 py-5">
+                <div class="col col-lg-3 col-sm-6 col-md-6 col-xs-6">
+
+                    <a class="navbar-brand text-dark" href="#">
+                        <h6 class="mx-4 ">Gift Certificates</h6>
+                    </a>
+
+                    <div class="list-group list-group-light ">
+
+                        <a href="#"
+                            class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">e-Gift
+                            Certificate</a>
+                        <a href="#"
+                            class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Classic
+                            Gift Card</a>
+                        <a href="#"
+                            class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Gift
+                            Card Terms & Conditions</a>
+
+                    </div>
+                </div>
+                <div class="col col-lg-3 col-sm-6 col-md-6 col-xs-6">
+
+                    <a class="navbar-brand text-dark" href="#">
+                        <h6 class="mx-4 ">Resources</h6>
+                    </a>
+                    <div class="list-group list-group-light ">
+
+                        <a href="#"
+                            class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2  list-group-item-light">Help
+                            Center</a>
+                        <a href="#"
+                            class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Returns</a>
+                        <a href="#"
+                            class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Order
+                            Status</a>
+                        <a href="#"
+                            class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Find
+                            a Store</a>
+                    </div>
+                </div>
+                <div class="col col-lg-3 col-sm-6 col-md-6 col-xs-6">
+                    <div class="list-group list-group-light ">
+                        <a class="navbar text-dark" href="#">
+                            <h6 class="mx-4">About Backcountry</h6>
+                        </a>
+                        <div class="list-group list-group-light ">
+
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">About
+                                Backcountry</a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Group
+                                Sales</a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Land
+                                Your Dream Job</a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Expedition
+                                Perks</a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Affiliate
+                                Program</a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Accessibility
+                                Statement</a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 rounded-3 text-left py-2 list-group-item-light">Contact
+                                Us</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col-lg-3 col-sm-6 col-md-6 col-xs-6">
+                    <div class="">
+                        <span type="button"> <i class="fa fa-facebook social-btn mx-2 my-2"></i></span>
+                        <span type="button"> <i class="fa fa-instagram social-btn mx-2 my-2"></i></span>
+                        <span type="button"> <i class="fa fa-twitter social-btn mx-2 my-2"></i></span>
+                        <span type="button"> <i class="fa fa-youtube-play social-btn mx-2 my-2"></i></span>
+                        <h6 class="mt-3 ">Download The Backcountry App</h6>
+                    </div>
+                    <div class="page-content ">
+                        <div>
+                            <button class="btn btn-dark btn-block page-container">
+                                <i class="fa fa-apple "></i>
+                                <span class="d-inline-block text-left">App Store</span>
+                            </button>
+                            <button class="btn btn-dark  btn-block page-container">
+                                <i class="fa fa-android"></i>
+                                <span class="d-inline-block text-left"> Google Play</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <!-- <div class="text-center d-flex mx-auto"> -->
+                <div class="col-lg-3 col-md-2 col-sm-12 d-flex ">
+                    <h6 class="mx-auto">Also Of Interest: </h6>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12 d-flex ">
+                    <a class="nav-item nav-link active pt-0 text-dark text-center" href="#">Thule - Roof,
+                        Hitch, & Trunk Racks For Bikes,...</a>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 d-flex text-center">
+                    <a class="nav-item nav-link active pt-0 text-dark w-100" href="#">Bike
+                        Hitch Racks</a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 d-flex">
+                    <a class="nav-item nav-link active pt-0 text-dark text-center" href="#">Backcountry On The Go
+                        Cargo Pant - Women's</a>
+                </div>
+                <!-- </div> -->
+
+                <!-- <div class="col d-flex col-sm-12 col-lg-12 col-sm-12 col-md-12 mx-5 px-5  mt-5 mb-2 ">
+                              <h6 class="d-flex mx-auto">Other Backcountry Companies:
+                            <a class="nav-item nav-link active pt-0 text-dark ml-5" href="#">Competitive
+                                Cyclist</a>
+                            <a class="nav-item nav-link active pt-0 text-dark" href="#">Steep & Cheap</a>
+                            <a class="nav-item nav-link active pt-0 text-dark" href="#">MotoSport</a>
+                            <a class="nav-item nav-link active pt-0 text-dark" href="#">Bergfreunde</a>
+                            </h6>
+
+                            </div> -->
+                <div class="col-lg-12 mt-5">
+
+                    <p class="text-center">© Backcountry.com - All Rights Reserved</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <img src="./../../asset/images/productionlist/header/backcountrylogo.jpg" class="mx-auto d-block" alt="">
+
+    </footer>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="./../../scripts/cart.js"></script>
+</body>
+
+</html>
