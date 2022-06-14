@@ -1,3 +1,5 @@
+import {createHtmlELement,setElementAttribute} from './helper.js'
+
 const products = [
     {
         "features": [
@@ -3169,13 +3171,13 @@ const products = [
 const cart = 'Cart'
 
 
-const createHtmlELement = (type) => {
-    return document.createElement(type);
-};
+// const createHtmlELement = (type) => {
+//     return document.createElement(type);
+// };
 
-const setElementAttribute = (element, type, value) => {
-    element.setAttribute(type, value);
-};
+// const setElementAttribute = (element, type, value) => {
+//     element.setAttribute(type, value);
+// };
 
 
 const fetchProducts = (product) => {
@@ -3221,7 +3223,7 @@ const fetchProducts = (product) => {
         cardAddToCartBtn.innerHTML = "Add To Cart";
 
         const cartId = localStorage.getItem(cart) || '[]'
-        parsedCartId = JSON.parse(cartId)
+        const parsedCartId = JSON.parse(cartId)
 
         const isAddedToCart = parsedCartId.find((btnId) => btnId === productData.id);
 
@@ -3287,7 +3289,9 @@ const addToCart = (productId, e) => {
 
     else if (cartBtn.innerHTML === 'Remove From Cart') {
         const cartItemIndex = parsedCartItem.indexOf(productId);
+        console.log(parsedCartItem)
         parsedCartItem.splice(cartItemIndex, 1)
+        console.log(parsedCartItem)
         cartBtn.innerHTML = 'Add To Cart'
         setElementAttribute(cartBtn, 'class', 'btn btn-dark mt-2')
     }

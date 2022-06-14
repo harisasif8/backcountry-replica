@@ -1,3 +1,4 @@
+import {createHtmlELement,setElementAttribute} from './helper.js'
 const BCProducts = [
     {
         "features": [
@@ -3166,15 +3167,17 @@ const BCProducts = [
     }
 ];
 
+
+
 const LScart = 'Cart'
 
-const createHtmlCartELement = (type) => {
-    return document.createElement(type);
-};
+// const createHtmlELement = (type) => {
+//     return document.createElement(type);
+// };
 
-const setCartElementAttribute = (element, type, value) => {
-    element.setAttribute(type, value);
-};
+// const setElementAttribute = (element, type, value) => {
+//     element.setAttribute(type, value);
+// };
 
 
 const showCartProducts = (cartProduct) => {
@@ -3182,7 +3185,7 @@ const showCartProducts = (cartProduct) => {
     const emptyCart = document.getElementById('emptyCart')
 
     const cartIds = localStorage.getItem(LScart) || '[]';
-    parsedCartId = JSON.parse(cartIds)
+    const parsedCartId = JSON.parse(cartIds)
 
     if (parsedCartId.length) {
         emptyCart.textContent = ''
@@ -3194,81 +3197,82 @@ const showCartProducts = (cartProduct) => {
 
         const cartRow = document.getElementById('cartRow');
 
-        const cartFirstColDiv = createHtmlCartELement('div')
-        setCartElementAttribute(cartFirstColDiv, 'class', 'col-lg-8 col-sm-12 col-md-8 mt-4')
+        const cartFirstColDiv = createHtmlELement('div')
+        setElementAttribute(cartFirstColDiv, 'class', 'col-lg-8 col-sm-12 col-md-8 mt-4')
 
-        const cartFlexDiv = createHtmlCartELement('div')
-        setCartElementAttribute(cartFlexDiv, 'class', 'd-flex')
+        const cartFlexDiv = createHtmlELement('div')
+        setElementAttribute(cartFlexDiv, 'class', 'd-flex')
 
-        const cartFirstFlexColDiv = createHtmlCartELement('div')
-        setCartElementAttribute(cartFirstFlexColDiv, 'class', 'col-lg-4 col-md-4')
+        const cartFirstFlexColDiv = createHtmlELement('div')
+        setElementAttribute(cartFirstFlexColDiv, 'class', 'col-lg-4 col-md-4')
         cartFlexDiv.appendChild(cartFirstFlexColDiv)
 
-        const cartImg = createHtmlCartELement('img')
-        setCartElementAttribute(cartImg, 'class', 'cart-image img-fluid')
+        const cartImg = createHtmlELement('img')
+        setElementAttribute(cartImg, 'class', 'cart-image img-fluid')
         cartImg.src = `https://www.backcountry.com${productMainImage.mediumImg}`;
 
 
-        const cartSecondFlexColDiv = createHtmlCartELement('div')
-        setCartElementAttribute(cartSecondFlexColDiv, 'class', 'col-lg-7 col-md-9')
+        const cartSecondFlexColDiv = createHtmlELement('div')
+        setElementAttribute(cartSecondFlexColDiv, 'class', 'col-lg-7 col-md-9')
         cartFlexDiv.appendChild(cartSecondFlexColDiv)
 
-        const cartTextDiv = createHtmlCartELement('div')
-        setCartElementAttribute(cartTextDiv, 'class', 'cart-text')
+        const cartTextDiv = createHtmlELement('div')
+        setElementAttribute(cartTextDiv, 'class', 'cart-text')
 
-        const cartTitle = createHtmlCartELement('h4')
+        const cartTitle = createHtmlELement('h4')
         cartTitle.innerHTML = productTitle;
 
-        const cartTextId = createHtmlCartELement('p')
-        setCartElementAttribute(cartTextId, 'class', 'text-secondary')
+        const cartTextId = createHtmlELement('p')
+        setElementAttribute(cartTextId, 'class', 'text-secondary')
         cartTextId.innerHTML = productId;
 
-        const cartParaText = createHtmlCartELement('div')
-        setCartElementAttribute(cartParaText, 'class', 'cart-para-text text-dark')
+        const cartParaText = createHtmlELement('div')
+        setElementAttribute(cartParaText, 'class', 'cart-para-text text-dark')
 
-        const cartColorPara = createHtmlCartELement('p')
+        const cartColorPara = createHtmlELement('p')
         cartColorPara.innerHTML = `Color: ${productMainImage.name}`
 
-        const cartSizePara = createHtmlCartELement('p')
+        const cartSizePara = createHtmlELement('p')
         cartSizePara.innerHTML = `Size: ${selectedSize}`
 
 
 
-        const cartSecondColDiv = createHtmlCartELement('div')
-        setCartElementAttribute(cartSecondColDiv, 'class', 'col-lg-2  col-sm-4 col-md-3 text-lg-right text-md-right mt-4')
+        const cartSecondColDiv = createHtmlELement('div')
+        setElementAttribute(cartSecondColDiv, 'class', 'col-lg-2  col-sm-4 col-md-3 text-lg-right text-md-right mt-4')
 
-        const cartQuantityDiv = createHtmlCartELement('div')
-        setCartElementAttribute(cartQuantityDiv, 'class', 'cart-quantity')
+        const cartQuantityDiv = createHtmlELement('div')
+        setElementAttribute(cartQuantityDiv, 'class', 'cart-quantity')
 
-        const quantityFirstDiv = createHtmlCartELement('div')
+        const quantityFirstDiv = createHtmlELement('div')
 
-        const decrementButton = createHtmlCartELement('button')
-        setCartElementAttribute(decrementButton, 'class', 'btn btn-outline-dark')
-        setCartElementAttribute(decrementButton, 'id', 'decrementBtn')
-        setCartElementAttribute(decrementButton, 'disabled', 'true')
+        const decrementButton = createHtmlELement('button')
+        setElementAttribute(decrementButton, 'class', 'btn btn-outline-dark')
+        setElementAttribute(decrementButton, 'id', 'decrementBtn')
+        setElementAttribute(decrementButton, 'disabled', 'true')
         decrementButton.innerHTML = '-'
 
-        const inputQuantity = createHtmlCartELement('input')
-        setCartElementAttribute(inputQuantity, 'class', 'btn text-center shadow-none ')
-        setCartElementAttribute(inputQuantity, 'value', '1')
-        setCartElementAttribute(inputQuantity, 'id', 'quantityValue')
+        const inputQuantity = createHtmlELement('input')
+        setElementAttribute(inputQuantity, 'class', 'btn text-center shadow-none ')
+        setElementAttribute(inputQuantity, 'value', '1')
+        setElementAttribute(inputQuantity, 'id', 'quantityValue')
 
-        const incrementButton = createHtmlCartELement('button')
-        setCartElementAttribute(incrementButton, 'class', 'btn btn-outline-dark')
-        setCartElementAttribute(incrementButton, 'onclick', `incrementQuantity('${parsedId}')`)
+        const incrementButton = createHtmlELement('button')
+        setElementAttribute(incrementButton, 'class', 'btn btn-outline-dark')
+        setElementAttribute(incrementButton, 'onclick', `incrementQuantity('${parsedId}')`)
         incrementButton.innerHTML = '+'
 
-        const quantitySecondDiv = createHtmlCartELement('div')
+        const quantitySecondDiv = createHtmlELement('div')
 
-        const productPrice = createHtmlCartELement('h6')
-        setCartElementAttribute(productPrice, 'class', 'mt-lg-4 ml-lg-5 mt-md-4 ml-md-5 price bold-text')
-        setCartElementAttribute(productPrice, 'id', 'price')
+        const productPrice = createHtmlELement('h6')
+        setElementAttribute(productPrice, 'class', 'mt-lg-4 ml-lg-5 mt-md-4 ml-md-5 price bold-text')
+        setElementAttribute(productPrice, 'id', 'price')
         productPrice.innerHTML = `${activePrice.maxListPrice}`
 
-        const removeCart = createHtmlCartELement('h5')
+        const removeCart = createHtmlELement('h5')
 
-        const removeCartBtn = createHtmlCartELement('button')
-        setCartElementAttribute(removeCartBtn, 'class', 'btn shadow-none text-muted mt-lg-3 underline')
+        const removeCartBtn = createHtmlELement('button')
+        setElementAttribute(removeCartBtn, 'class', 'btn shadow-none text-muted mt-lg-3 underline')
+        setElementAttribute(removeCartBtn,'onclick',`removeItem('${productId}')`)
         removeCartBtn.innerHTML = 'Remove'
 
         cartRow.appendChild(cartFirstColDiv)
@@ -3317,5 +3321,19 @@ const incrementQuantity = (backCountryProduct) => {
 
 }
 // incrementQuantity(BCProducts)
+
+
+const removeItem = (productId) => {
+    const cartItems = localStorage.getItem(LScart) || '[]';
+    const parsedCartItems = JSON.parse(cartItems) 
+    const cartIdIndex = parsedCartItems.indexOf(productId)
+    console.log(parsedCartItems)
+    parsedCartItems.splice(cartIdIndex,1)
+
+    localStorage.setItem(LScart,JSON.stringify(parsedCartItems))
+
+console.log(parsedCartItems)
+    
+}
 
 
