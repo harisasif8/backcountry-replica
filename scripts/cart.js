@@ -3192,7 +3192,7 @@ const showCartProducts = (cartProduct) => {
     }
 
     parsedCartId.map((parsedId) => {
-        const filteredId = cartProduct.find((product) => product.id === parsedId);
+        const filteredId = cartProduct.find((product) => product.id === parsedId.id);
         const { productMainImage, title: productTitle, id: productId, selectedSize, activePrice } = filteredId;
 
         const cartRow = document.getElementById('cartRow');
@@ -3254,26 +3254,28 @@ const showCartProducts = (cartProduct) => {
         const inputQuantity = createHtmlELement('input')
         setElementAttribute(inputQuantity, 'class', 'btn text-center shadow-none ')
         setElementAttribute(inputQuantity, 'value', '1')
-        setElementAttribute(inputQuantity, 'id', 'quantityValue')
+        // setElementAttribute(inputQuantity, 'id', 'quantityValue')
+        setElementAttribute(inputQuantity, 'id', `'${productId}'`)
 
         const incrementButton = createHtmlELement('button')
         setElementAttribute(incrementButton, 'class', 'btn btn-outline-dark')
-        setElementAttribute(incrementButton, 'onclick', `incrementQuantity('${parsedId}')`)
+        // setElementAttribute(incrementButton, 'onclick', `incrementQuantity('${parsedId}')`)
         incrementButton.innerHTML = '+'
-
+        incrementButton.addEventListener("click", () => incrementQuantity(productId))
         const quantitySecondDiv = createHtmlELement('div')
 
         const productPrice = createHtmlELement('h6')
         setElementAttribute(productPrice, 'class', 'mt-lg-4 ml-lg-5 mt-md-4 ml-md-5 price bold-text')
         setElementAttribute(productPrice, 'id', 'price')
-        productPrice.innerHTML = `${activePrice.maxListPrice}`
+        productPrice.innerHTML = `$${activePrice.maxListPrice}`
 
         const removeCart = createHtmlELement('h5')
 
         const removeCartBtn = createHtmlELement('button')
         setElementAttribute(removeCartBtn, 'class', 'btn shadow-none text-muted mt-lg-3 underline')
-        setElementAttribute(removeCartBtn,'onclick',`removeItem('${productId}')`)
+        // setElementAttribute(removeCartBtn, 'onclick', `removeCartItem('${productId}')`)
         removeCartBtn.innerHTML = 'Remove'
+        removeCartBtn.addEventListener("click", () => removeCartItem(productId));
 
         cartRow.appendChild(cartFirstColDiv)
         cartFirstColDiv.appendChild(cartFlexDiv)
@@ -3301,39 +3303,37 @@ const showCartProducts = (cartProduct) => {
 showCartProducts(BCProducts)
 
 
-const incrementQuantity = (backCountryProduct) => {
+const incrementQuantity = (productId) => {
+    
+    let itemQuantityValue = document.getElementById(`'${productId}'`).value
+    itemQuantityValue++
+    document.getElementById(`'${productId}'`).value = itemQuantityValue
 
+    console.log(itemQuantityValue);
 
-    let quantityValue = document.getElementById('quantityValue').value
-    let productPrice = document.getElementById('price').innerText
-
-    quantityValue++
-
-    document.getElementById('quantityValue').value = quantityValue
-
-    if (quantityValue > 1) {
-        const decrementQuantity = document.getElementById('decrementBtn')
-        decrementQuantity.removeAttribute('disabled')
-    }
-
-
-
+    const LScartItems = localStorage.getItem(LScart) || '[]';
+    const LSparsedCartItems = JSON.parse(LScartItems)
+    const cartItemIndex =  LSparsedCartItems.find((cartProductId) => cartProductId.id === productId);
+    let productQuantity = cartItemIndex.quantity
+    productQuantity = itemQuantityValue
+    console.log(productQuantity);
+    
+    // localStorage.setItem(LScart, JSON.stringify(productQuantity))
 
 }
-// incrementQuantity(BCProducts)
 
 
-const removeItem = (productId) => {
-    const cartItems = localStorage.getItem(LScart) || '[]';
-    const parsedCartItems = JSON.parse(cartItems) 
-    const cartIdIndex = parsedCartItems.indexOf(productId)
-    console.log(parsedCartItems)
-    parsedCartItems.splice(cartIdIndex,1)
 
-    localStorage.setItem(LScart,JSON.stringify(parsedCartItems))
 
-console.log(parsedCartItems)
-    
+const removeCartItem = (productId) => {
+    const LScartItems = localStorage.getItem(LScart) || '[]';
+    const LSparsedCartItems = JSON.parse(LScartItems)
+    const cartItemIndex =  LSparsedCartItems.find((cartProductId) => cartProductId.id === productId);
+    const cartIdIndex = LSparsedCartItems.indexOf(cartItemIndex)
+    LSparsedCartItems.splice(cartIdIndex, 1)
+
+    localStorage.setItem(LScart, JSON.stringify(LSparsedCartItems))
+
 }
 
 

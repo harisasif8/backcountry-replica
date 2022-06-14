@@ -265,6 +265,10 @@ hr {
         vertical-align: center;
     }
 
+    .recent-viewed-items{
+        font-size: 100%;
+       }
+
 }
 
 @media only screen and (min-width: 420px) {
@@ -296,6 +300,9 @@ hr {
 
         font-size: medium;
     }
+
+    
+
 
 }
 
@@ -335,6 +342,7 @@ hr {
         width: 32%;
         align-items: right;
     }
+    
 
 }
 

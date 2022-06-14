@@ -6,4 +6,4 @@ const setElementAttribute = (element, type, value) => {
     element.setAttribute(type, value);
 };
 
-export {createHtmlELement,setElementAttribute}
+export { createHtmlELement, setElementAttribute }

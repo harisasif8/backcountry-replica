@@ -1,4 +1,4 @@
-import {createHtmlELement,setElementAttribute} from './helper.js'
+import { createHtmlELement, setElementAttribute } from './helper.js'
 
 const products = [
     {
@@ -3170,6 +3170,8 @@ const products = [
 
 const cart = 'Cart'
 
+const searchBar = document.getElementById('searchBar')
+searchBar.addEventListener('keyup',() => searchProducts())
 
 // const createHtmlELement = (type) => {
 //     return document.createElement(type);
@@ -3215,17 +3217,17 @@ const fetchProducts = (product) => {
 
         const cardAddToCartBtnDiv = createHtmlELement('div')
         const cardAddToCartBtn = createHtmlELement('a')
+
         setElementAttribute(cardAddToCartBtn, 'class', 'btn btn-dark  mt-2')
         setElementAttribute(cardAddToCartBtn, 'href', '#')
-        setElementAttribute(cardAddToCartBtn, 'onclick', `addToCart('${productData.id}',event)`)
         setElementAttribute(cardAddToCartBtn, 'id', `'${productData.id}'`)
-
+        cardAddToCartBtn.addEventListener("click", (e) => addToCart(productData.id,productData.activePrice.maxListPrice, e));
         cardAddToCartBtn.innerHTML = "Add To Cart";
 
         const cartId = localStorage.getItem(cart) || '[]'
         const parsedCartId = JSON.parse(cartId)
 
-        const isAddedToCart = parsedCartId.find((btnId) => btnId === productData.id);
+        const isAddedToCart = parsedCartId.find((btnId) => btnId.id === productData.id);
 
         if (isAddedToCart) {
             setElementAttribute(cardAddToCartBtn, 'class', 'btn btn-danger mt-2')
@@ -3275,23 +3277,31 @@ const searchProducts = (value) => {
 }
 
 
-const addToCart = (productId, e) => {
-    e.preventDefault()
+const addToCart = (productId, productPrice, e) => {
+    e.preventDefault();
+
+    const LScartItems = {
+        id : productId,
+        price : productPrice,
+        quantity : 1
+    }
+
     const cartBtn = document.getElementById(`'${productId}'`);
     const cartItem = localStorage.getItem(cart) || '[]';
     const parsedCartItem = JSON.parse(cartItem);
+    console.log(LScartItems.id);
 
     if (cartBtn.innerHTML === 'Add To Cart') {
-        parsedCartItem.push(productId);
+        parsedCartItem.push(LScartItems);
         cartBtn.innerHTML = 'Remove From Cart'
         setElementAttribute(cartBtn, 'class', 'btn btn-danger mt-2')
     }
 
     else if (cartBtn.innerHTML === 'Remove From Cart') {
-        const cartItemIndex = parsedCartItem.indexOf(productId);
-        console.log(parsedCartItem)
-        parsedCartItem.splice(cartItemIndex, 1)
-        console.log(parsedCartItem)
+
+       const cartItemIndex =  parsedCartItem.find((cartProductId) => cartProductId.id === productId); 
+        const cartIdIndex = parsedCartItem.indexOf(cartItemIndex); 
+        parsedCartItem.splice(cartIdIndex, 1)
         cartBtn.innerHTML = 'Add To Cart'
         setElementAttribute(cartBtn, 'class', 'btn btn-dark mt-2')
     }
@@ -3300,18 +3310,3 @@ const addToCart = (productId, e) => {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
