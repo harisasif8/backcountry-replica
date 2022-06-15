@@ -3173,14 +3173,6 @@ const cart = 'Cart'
 const searchBar = document.getElementById('searchBar')
 searchBar.addEventListener('keyup',() => searchProducts())
 
-// const createHtmlELement = (type) => {
-//     return document.createElement(type);
-// };
-
-// const setElementAttribute = (element, type, value) => {
-//     element.setAttribute(type, value);
-// };
-
 
 const fetchProducts = (product) => {
     const gridRow = document.getElementById('grid-row');

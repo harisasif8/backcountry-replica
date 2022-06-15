@@ -1,4 +1,4 @@
-import {createHtmlELement,setElementAttribute} from './helper.js'
+import { createHtmlELement, setElementAttribute } from './helper.js'
 const BCProducts = [
     {
         "features": [
@@ -3167,17 +3167,7 @@ const BCProducts = [
     }
 ];
 
-
-
 const LScart = 'Cart'
-
-// const createHtmlELement = (type) => {
-//     return document.createElement(type);
-// };
-
-// const setElementAttribute = (element, type, value) => {
-//     element.setAttribute(type, value);
-// };
 
 
 const showCartProducts = (cartProduct) => {
@@ -3192,6 +3182,7 @@ const showCartProducts = (cartProduct) => {
     }
 
     parsedCartId.map((parsedId) => {
+        console.log(parsedId.quantity);
         const filteredId = cartProduct.find((product) => product.id === parsedId.id);
         const { productMainImage, title: productTitle, id: productId, selectedSize, activePrice } = filteredId;
 
@@ -3247,13 +3238,15 @@ const showCartProducts = (cartProduct) => {
 
         const decrementButton = createHtmlELement('button')
         setElementAttribute(decrementButton, 'class', 'btn btn-outline-dark')
-        setElementAttribute(decrementButton, 'id', 'decrementBtn')
+        setElementAttribute(decrementButton, 'id', `btn'${productId}'`)
         setElementAttribute(decrementButton, 'disabled', 'true')
         decrementButton.innerHTML = '-'
+        decrementButton.addEventListener("click", () => decrementQuantity(productId))
+
 
         const inputQuantity = createHtmlELement('input')
         setElementAttribute(inputQuantity, 'class', 'btn text-center shadow-none ')
-        setElementAttribute(inputQuantity, 'value', '1')
+        setElementAttribute(inputQuantity, 'value', `${parsedId.quantity}`)
         // setElementAttribute(inputQuantity, 'id', 'quantityValue')
         setElementAttribute(inputQuantity, 'id', `'${productId}'`)
 
@@ -3266,8 +3259,9 @@ const showCartProducts = (cartProduct) => {
 
         const productPrice = createHtmlELement('h6')
         setElementAttribute(productPrice, 'class', 'mt-lg-4 ml-lg-5 mt-md-4 ml-md-5 price bold-text')
-        setElementAttribute(productPrice, 'id', 'price')
-        productPrice.innerHTML = `$${activePrice.maxListPrice}`
+        setElementAttribute(productPrice, 'id', `price'${productId}'`)
+
+        productPrice.innerHTML = `${parsedId.price}`
 
         const removeCart = createHtmlELement('h5')
 
@@ -3304,32 +3298,71 @@ showCartProducts(BCProducts)
 
 
 const incrementQuantity = (productId) => {
-    
-    let itemQuantityValue = document.getElementById(`'${productId}'`).value
-    itemQuantityValue++
-    document.getElementById(`'${productId}'`).value = itemQuantityValue
-
-    console.log(itemQuantityValue);
-
+    const itemQuantityId = document.getElementById(`btn'${productId}'`);
+    const itemQuantityValue = parseInt(document.getElementById(`'${productId}'`).value) + 1;
     const LScartItems = localStorage.getItem(LScart) || '[]';
-    const LSparsedCartItems = JSON.parse(LScartItems)
-    const cartItemIndex =  LSparsedCartItems.find((cartProductId) => cartProductId.id === productId);
-    let productQuantity = cartItemIndex.quantity
-    productQuantity = itemQuantityValue
-    console.log(productQuantity);
-    
-    // localStorage.setItem(LScart, JSON.stringify(productQuantity))
+    const LSparsedCartItems = JSON.parse(LScartItems);
+    const cartItem = LSparsedCartItems.find((cartProductId) => cartProductId.id === productId);
+    const BCproductPrice = BCProducts.find((cartProductPriceId) => cartProductPriceId.id === productId)
+    const productPrice = cartItem.quantity * BCproductPrice.activePrice.maxListPrice;
+
+    cartItem.price = productPrice;
+    cartItem.quantity = itemQuantityValue;
+
+    document.getElementById(`price'${productId}'`).innerHTML = productPrice;
+    document.getElementById(`'${productId}'`).value = itemQuantityValue;
+
+    if (cartItem.quantity >= 1) {
+        itemQuantityId.removeAttribute('disabled')
+    }
+
+    localStorage.setItem(LScart, JSON.stringify(LSparsedCartItems))
 
 }
 
+const decrementQuantity = (productId) => {
 
+    const itemQuantityId = document.getElementById(`btn'${productId}'`)
+    console.log(itemQuantityId);
+
+    let itemQuantityValue = document.getElementById(`'${productId}'`).value
+    console.log(itemQuantityValue);
+    itemQuantityValue--
+    document.getElementById(`'${productId}'`).value = itemQuantityValue
+
+    // console.log(itemQuantityValue);
+
+    const LScartItems = localStorage.getItem(LScart) || '[]';
+    const LSparsedCartItems = JSON.parse(LScartItems)
+    const cartItem = LSparsedCartItems.find((cartProductId) => cartProductId.id === productId);
+    let productQuantity = cartItem.quantity
+    productQuantity = itemQuantityValue
+    cartItem.quantity = productQuantity
+
+    if (cartItem.quantity === 1) {
+        setElementAttribute(itemQuantityId, 'disabled', 'true')
+        // itemQuantityId.removeAttribute('disabled')
+    }
+    // else {
+    //     itemQuantityId.removeAttribute('disabled')
+    // }
+
+    console.log(productQuantity);
+
+    // LSparsedCartItems.push(productQuantity)
+    // console.log(productQuantity);
+    // console.log(LSparsedCartItems);
+
+    localStorage.setItem(LScart, JSON.stringify(LSparsedCartItems))
+
+}
 
 
 const removeCartItem = (productId) => {
     const LScartItems = localStorage.getItem(LScart) || '[]';
     const LSparsedCartItems = JSON.parse(LScartItems)
-    const cartItemIndex =  LSparsedCartItems.find((cartProductId) => cartProductId.id === productId);
-    const cartIdIndex = LSparsedCartItems.indexOf(cartItemIndex)
+    const cartItem = LSparsedCartItems.find((cartProductId) => cartProductId.id === productId);
+    const cartIdIndex = LSparsedCartItems.indexOf(cartItem)
     LSparsedCartItems.splice(cartIdIndex, 1)
 
     localStorage.setItem(LScart, JSON.stringify(LSparsedCartItems))
