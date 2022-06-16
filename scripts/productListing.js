@@ -3272,7 +3272,7 @@ const searchProducts = (value) => {
 const addToCart = (productId, productPrice, e) => {
     e.preventDefault();
 
-    const LScartItems = {
+    const LocalStorageCartItems = {
         id : productId,
         price : productPrice,
         quantity : 1
@@ -3281,10 +3281,9 @@ const addToCart = (productId, productPrice, e) => {
     const cartBtn = document.getElementById(`'${productId}'`);
     const cartItem = localStorage.getItem(cart) || '[]';
     const parsedCartItem = JSON.parse(cartItem);
-    console.log(LScartItems.id);
 
     if (cartBtn.innerHTML === 'Add To Cart') {
-        parsedCartItem.push(LScartItems);
+        parsedCartItem.push(LocalStorageCartItems);
         cartBtn.innerHTML = 'Remove From Cart'
         setElementAttribute(cartBtn, 'class', 'btn btn-danger mt-2')
     }
