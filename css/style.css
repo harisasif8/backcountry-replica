@@ -216,7 +216,9 @@ hr {
 }
 
 
-
+.pattern:invalid{
+    color: red; 
+}
 
 
 @media only screen and (max-width: 600px) {
@@ -269,6 +271,10 @@ hr {
         font-size: 100%;
        }
 
+       .quantity-second-div h6.price{
+        margin-left: 30%;
+    }
+
 }
 
 @media only screen and (min-width: 420px) {
@@ -304,11 +310,14 @@ hr {
     .recent-viewed-items{
         font-size: 100%;
        }
-
+       
+       
 
 }
 
 @media(max-width: 320px) {
+
+
     .cart-text h4 {
         font-size: 8px;
     }
@@ -328,23 +337,54 @@ hr {
     }
 
     .cart-quantity {
-        margin-top: 30px;
+        margin-top: 10px;
         margin-left: 25px;
         display: flex;
     }
 
     .cart-quantity button.btn-outline-dark {
 
-        width: 25%;
-        font-size: medium;
-
+        width: 20%;
+        font-size: small;
+        
     }
 
     .cart-quantity input {
         width: 32%;
         align-items: right;
     }
-    
+    .cart-quantity h6{
+        font-size: 70%;
+    }
+    .cart-quantity h5 button{
+        font-size: 50%;
+    }
+
+    /* .quantityFirstDiv{
+        width: 50%;
+    } */
 
 }
+@media only screen and ( min-width: 539px) and (max-width:541px){
+    .cart-quantity {
+        display: flex;
+    }
+   
+    .cart-quantity input {
+        width: 35%;
+        align-items: right;
+    
+    }
 
+    .quantity-first-div{
+        width: 50%;
+        margin-left: 30px;
+    }
+    .quantity-second-div{
+        width: 50%;
+        margin-left: 150px;
+    }
+    .quantity-second-div h6.price{
+        margin-left: 15%;
+    }
+}

@@ -2028,7 +2028,7 @@ const products = [
         "isGearheadPick": false,
         "id": "SPU0006",
         "availabilityStatus": "InStock",
-        "title": "Flex Knee Guards",
+        "title": "Flex Knee Guards 2-set",
         "activationDate": "2016-03-31 06:00:00",
         "brand": {
             "name": "7 Protection"
@@ -2449,7 +2449,7 @@ const products = [
         "isGearheadPick": false,
         "id": "SPU000C",
         "availabilityStatus": "InStock",
-        "title": "Flex Body Protector",
+        "title": "Flex Body Protector pair",
         "activationDate": "2016-06-21 06:00:00",
         "brand": {
             "name": "7 Protection"

@@ -3234,18 +3234,20 @@ const showCartProducts = (cartProduct) => {
         setElementAttribute(cartQuantityDiv, 'class', 'cart-quantity')
 
         const quantityFirstDiv = createHtmlELement('div')
+        setElementAttribute(quantityFirstDiv,'class','quantity-first-div')
 
         const decrementButton = createHtmlELement('button')
         setElementAttribute(decrementButton, 'class', 'btn btn-outline-dark')
         setElementAttribute(decrementButton, 'id', `decBtn'${productId}'`)
         setElementAttribute(decrementButton, 'value', 'minus')
-        setElementAttribute(decrementButton, 'disabled', 'true')
+        if (parsedId.quantity === 1) { setElementAttribute(decrementButton, 'disabled', 'true') }
         decrementButton.innerHTML = '-'
         decrementButton.addEventListener("click", (event) => quantityHandler(event, productId))
 
         const inputQuantity = createHtmlELement('input')
-        setElementAttribute(inputQuantity, 'class', 'btn text-center shadow-none ')
+        setElementAttribute(inputQuantity, 'class', 'btn text-center shadow-none pattern')
         setElementAttribute(inputQuantity, 'value', `${parsedId.quantity}`)
+        setElementAttribute(inputQuantity,'pattern','[0-9]+')
         setElementAttribute(inputQuantity, 'id', `'${productId}'`)
 
         const incrementButton = createHtmlELement('button')
@@ -3256,9 +3258,11 @@ const showCartProducts = (cartProduct) => {
         incrementButton.addEventListener("click", (event) => quantityHandler(event, productId))
 
         const quantitySecondDiv = createHtmlELement('div')
+        setElementAttribute(quantitySecondDiv,'class','quantity-second-div')
+
 
         const productPrice = createHtmlELement('h6')
-        setElementAttribute(productPrice, 'class', 'mt-lg-4 ml-lg-5 mt-md-4 ml-md-5 price bold-text')
+        setElementAttribute(productPrice, 'class', 'mt-lg-4 ml-lg-5 mt-md-4 ml-md-5 price bold-text mr-3')
         setElementAttribute(productPrice, 'id', `price'${productId}'`)
 
         productPrice.innerHTML = `${parsedId.price}`
@@ -3305,13 +3309,13 @@ const quantityHandler = (e, productId) => {
 
 
     if (e.target.value === 'minus') {
-        const itemQuantityValue = parseInt(quantity) - 1;
+        const itemQuantityValue = parseInt(quantity) - 1 || 0;
         cartItem.quantity = itemQuantityValue;
         document.getElementById(`'${productId}'`).value = itemQuantityValue;
     }
 
     else {
-        const itemQuantityValue = parseInt(quantity) + 1;
+        const itemQuantityValue = parseInt(quantity) + 1 || 0;
         cartItem.quantity = itemQuantityValue;
         document.getElementById(`'${productId}'`).value = itemQuantityValue;
     }
@@ -3320,9 +3324,10 @@ const quantityHandler = (e, productId) => {
     cartItem.price = parseFloat(totalProductPrice.toFixed(2));
 
 
-    if (cartItem.quantity === 1) {
+    if (cartItem.quantity === 1 || cartItem.quantity<=0) {
         setElementAttribute(decItemQuantityId, 'disabled', 'true')
     }
+
     else {
         decItemQuantityId.removeAttribute('disabled')
     }
